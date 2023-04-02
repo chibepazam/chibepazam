@@ -1,0 +1,4 @@
+Django==4.1.7
+dj_database_url
+psycopg2[binray]
+psycopg2-binary
