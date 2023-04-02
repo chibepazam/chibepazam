@@ -17,4 +17,18 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - "8080:80"
-    
+  web:
+      build: 
+        context: .
+        dockerfile: Dockerfile.dev
+      command: python manage.py runserver 0.0.0.0:8000
+      container_name: django_web
+      environment:
+      - DATABASE_URL="postgres://root:root@pgdatabase:5432/foods"
+      volumes:
+      - .:/code
+      ports:
+      - "8000:8000"
+      depends_on:
+      - pgdatabase      
+      
